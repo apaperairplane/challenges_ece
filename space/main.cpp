@@ -1,3 +1,11 @@
+/*	SPACE INVADERS! ; BRYAN CARRILLO
+ *	CONTROLS: 'A' move left
+ *		'D' move right
+ *		'S' shoot
+ *		'P' quit
+ */
+
+
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -57,6 +65,7 @@ void drawShield(int x, int y, int damage){
 }
 
 void drawBullet(int x, int y){
+
 	gfx_line(x+10, y+5, x+10, y+20);
 	gfx_line(x+10, y+20, x+15, y+20);
 	gfx_line(x+15, y+20, x+15, y+5);
@@ -121,7 +130,9 @@ int main(){
 		if(movehalfbeat){
 			gfx_clear();
 			if(alienDed){
-				break;
+				x = 5;
+				y = 5;
+				reverse = false;
 			}
 	                drawAlien(x,y);
 	                drawShield(30, 300, s1d);
