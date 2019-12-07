@@ -86,6 +86,7 @@ int main(){
 	bool bulletTime = false;
 	int bullety = 0;
 	int bulletx = 0;
+	bool alienDed = false;
 
 	while(true){
 		if(gfx_event_waiting()){
@@ -119,6 +120,9 @@ int main(){
 		sleep_until(steady_clock::now() + milliseconds(65));
 		if(movehalfbeat){
 			gfx_clear();
+			if(alienDed){
+				break;
+			}
 	                drawAlien(x,y);
 	                drawShield(30, 300, s1d);
 	                drawShield(90, 300, s2d);
@@ -147,8 +151,9 @@ int main(){
 			movehalfbeat = true;
 		}
 		if(bulletTime){
-                                if(bulletx > x && bulletx < x + 25  && bullety > y && bullety < y + 25){
+                                if(bulletx > x && bulletx < x + 40  && bullety > y && bullety < y + 40){
                                         bulletTime = false;
+					alienDed = true;
                                 }else if(bullety > 5){
                                         drawBullet(bulletx, bullety);
                                         bullety -= 30;
@@ -157,7 +162,7 @@ int main(){
                                 }
 
                         }
-
 	}
+
 	return 0;
 }
